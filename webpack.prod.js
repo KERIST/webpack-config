@@ -67,9 +67,17 @@ module.exports = {
 			canPrint: true,
 		}),
 		new webpack.optimize.UglifyJsPlugin({
-			sourceMap: false,
-			mangle: false,
-			comments: false,
+			mangle: true,
+                    compress: {
+                      warnings: false, // Suppress uglification warnings
+                      pure_getters: true,
+                      unsafe: true,
+                      unsafe_comps: true,
+                      screw_ie8: true
+                    },
+                    output: {
+                      comments: false,
+                    }
 		}),
 	],
 };
